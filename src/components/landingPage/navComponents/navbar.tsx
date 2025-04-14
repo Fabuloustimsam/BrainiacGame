@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
@@ -8,9 +9,11 @@ export default function Navbar() {
             
           
         </div>
-        <button className="bg-purple-800 rounded-xl text-white w-60 h-14 text-sm justify-center text-center">LOGIN</button>
+        <Link href={"/login"}>
+        <button className="bg-purple-700  active:shadow-2xl hover:bg-purple-500 rounded-xl text-white w-60 h-14 text-sm justify-center text-center">LOGIN</button></Link>
       
       
     </nav>
   ); 
 }
+
