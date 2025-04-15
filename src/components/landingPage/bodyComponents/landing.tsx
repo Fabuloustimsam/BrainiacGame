@@ -9,7 +9,7 @@ export default function Landing() {
         <div className='py-7 text-xl w-[612px]'>Put your knowledge to the test with fun and challenging quizzes across a variety of topics.</div>
         <button className='w-80 h-14 border text-purple-700 font-serif border-purple-700'> Take a quick quiz</button>
         </div>
-        <Image alt="logo" src={"/landingImg.svg"} width={612} height={132}/>
+        <Image alt="logo" src={"/Heroimage.svg"} width={612} height={132}/>
         
     </div>
     

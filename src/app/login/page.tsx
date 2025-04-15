@@ -7,7 +7,7 @@ export default function page() {
   return (
     <>
     <div className='flex justify-between'>
-        <div className='h-[952px] w-full bg-purple-700'>
+        <div className='h-[952px] rounded-2xl w-full bg-purple-700'>
             <div className='flex items-center gap-5 w-[294px] py-3 px-3'>
             <Link href={"/"}>
               <div className='text-white'>back</div></Link>
@@ -16,7 +16,7 @@ export default function page() {
             </div>
 
             <div className='justify-items-center items-center  flex flex-col font-serif text-center'>
-                 <Image alt="logo" src={"/landingImg.svg"} width={566} height={566}/>
+                 <Image alt="logo" src={"/Heroimage.svg"} width={566} height={566}/>
                 <div className='text-4xl text-white font-bold py-2.5'>Welcome to Brainiac</div>
                 <div className='text-sm text-white'>Sharpen your mind with fun <br /> challenging quizzes</div>
             </div>
@@ -50,12 +50,12 @@ export default function page() {
 
             <div className='flex flex-col gap-2.5'>
             <div className='text-2xl font-serif'>Password</div>
-            <input className='rounded-2xl bg-gray-200 w-[644px] h-[70px] px-4'  type="email" placeholder='Password' />
+            <input className='rounded-2xl bg-gray-200 w-[644px] h-[70px] px-4'  type="password" placeholder='Password' />
             </div>
 
             <div className='flex flex-col gap-2.5'>
             <div className='text-2xl font-serif'>Confirm password</div>
-            <input className='rounded-2xl bg-gray-200 w-[644px] h-[70px] px-4'  type="email" placeholder='Confirm Password'/>
+            <input className='rounded-2xl bg-gray-200 w-[644px] h-[70px] px-4'  type="password" placeholder='Confirm Password'/>
             </div>
             
             <button className='bg-purple-700 cursor-pointer rounded-2xl text-white w-[644px] h-[70px] my-7 font-black font-serif text-2xl'>Create an Account</button>
@@ -76,7 +76,7 @@ export default function page() {
 
             <footer className="flex items-center justify-center text-center">
              <div className="w-[349px]">
-                  By creating an account you accept Brainiac's <span className='text-purple-700'>Terms of Services</span> and <span className='text-purple-700'>Privacy Policy</span>
+                  By creating an account you accept Brainiac <span className='text-purple-700'>Terms of Services</span> and <span className='text-purple-700'>Privacy Policy</span>
              </div>
             </footer>
 
