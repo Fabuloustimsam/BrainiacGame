@@ -14,7 +14,8 @@ export default function page() {
         <div className='h-[952px] rounded-2xl w-full bg-purple-700'>
             <div className='flex items-center gap-5 w-[294px] py-3 px-3'>
             <Link href={"/"}>
-              <div className='text-white'>back</div></Link>
+              <div className="text-white">back</div>
+            </Link>
 
             <Image alt="logo" src={"/whitebrainiac.svg"} width={230} height={53}/>
             </div>
@@ -70,9 +71,10 @@ export default function page() {
                 <hr className="border border-slate-400" />
              </div>
             <h2 className="font-sans px-2">or</h2>
-             <div className="w-[315px]">
-            <hr className="border border-slate-400" /></div>
+            <div className="w-[315px]">
+              <hr className="border border-slate-400" />
             </div>
+          </div>
 
             <button className='rounded-2xl cursor-pointer flex items-center gap-2 justify-center w-[644px] h-[70px] my-7 font-black font-serif text-lg border border-gray-300 border-b-4 shadow-md bg-white'>
              <Image alt="logo" src={"/googleicon.svg"} width={32} height={32} />
