@@ -11,12 +11,7 @@ export default function Page() {
           <Link href="/">
             <div className="text-white cursor-pointer">back</div>
           </Link>
-          <Image
-            alt="logo"
-            src="/whitebrainiac.svg"
-            width={230}
-            height={53}
-          />
+          <Image alt="logo" src="/whitebrainiac.svg" width={230} height={53} />
         </div>
 
         <div className="flex flex-col items-center justify-center font-serif text-center">
@@ -36,9 +31,7 @@ export default function Page() {
 
         <footer className="pt-14">
           <div className="items-center font-serif text-2xl flex gap-2.5 justify-center">
-            <div className="text-white font-bold">
-              Already have an account?
-            </div>
+            <div className="text-white font-bold">Already have an account?</div>
             <Link href="/loginButton">
               <div className="text-yellow-600 font-bold cursor-pointer">
                 Login
@@ -114,7 +107,12 @@ export default function Page() {
 
         {/* Google Signup */}
         <button className="rounded-2xl flex items-center gap-2 justify-center w-[644px] h-[70px] my-7 font-black font-serif text-lg border border-gray-300 border-b-4 shadow-md bg-white cursor-pointer">
-          <Image alt="Google Icon" src="/googleicon.svg" width={32} height={32} />
+          <Image
+            alt="Google Icon"
+            src="/googleicon.svg"
+            width={32}
+            height={32}
+          />
           Sign up with Google
         </button>
 
