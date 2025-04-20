@@ -1,18 +1,28 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { Eye, EyeOff } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 export default function page() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
       <div className="flex justify-between">
         <div className="h-[952px] rounded-2xl w-full bg-purple-700">
           <div className="flex items-center gap-5 w-[294px] py-3 px-3">
             <Link href={"/"}>
-              <div className="text-white">back</div>
+              <div className="text-white">
+                <ArrowLeft className="w-4 h-4" />
+              </div>
             </Link>
-
             <Image
               alt="logo"
               src={"/whitebrainiac.svg"}
@@ -21,7 +31,7 @@ export default function page() {
             />
           </div>
 
-          <div className="justify-items-center items-center  flex flex-col font-serif text-center">
+          <div className="justify-items-center items-center flex flex-col font-serif text-center">
             <Image alt="logo" src={"/Heroimage.svg"} width={566} height={566} />
             <div className="text-4xl text-white font-bold py-2.5">
               Welcome to Brainiac
@@ -32,18 +42,20 @@ export default function page() {
           </div>
 
           <footer className="pt-14">
-            <div className="items-center font-serif text-2xl  flex gap-2.5 justify-center">
+            <div className="items-center font-serif text-2xl flex gap-2.5 justify-center">
               <div className="text-white font-bold">
                 Already have an account ?
               </div>
-              <div className="text-yellow-600 font-bold cursor-pointer">
-                Create an account
-              </div>
+              <Link href="/login">
+                <div className="text-yellow-600 font-bold cursor-pointer">
+                  Create an account
+                </div>
+              </Link>
             </div>
           </footer>
         </div>
 
-        <form className="w-full flex flex-col h-full px-7 gap-3  bg-white justify-center justify-items-center">
+        <form className="w-full flex flex-col h-full px-7 gap-3 bg-white w-full justify-center justify-items-center">
           <div className="justify-center text-center">
             <div className="font-black pt-2 pb-16 font-serif text-4xl">
               Welcome Back!
@@ -63,16 +75,23 @@ export default function page() {
             <div className="text-2xl font-serif">Password</div>
             <div className="flex relative">
               <input
-                className="rounded-2xl relative bg-gray-200 w-[644px] h-[70px] px-4"
-                type="password"
+                className="rounded-2xl bg-gray-200 w-[644px] h-[70px] px-4"
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
               />
-              <div className="absolute right-12 top-5 items-center">
-                <EyeOff size={24} /> : <Eye size={24} />
+              <div className="absolute right-8 top-5 cursor-pointer text-gray-500">
+                {showPassword ? (
+                  <Eye size={24} onClick={togglePassword} />
+                ) : (
+                  <EyeOff size={24} onClick={togglePassword} />
+                )}
               </div>
             </div>
-
-            <div className="text-end px-4  text-gray-400">Forgot password?</div>
+            <Link href={"/forgotPassword"}>
+              <div className="text-end px-4 cursor-pointer text-gray-400">
+                Forgot password?
+              </div>
+            </Link>
           </div>
 
           <button className="bg-purple-700 cursor-pointer rounded-2xl text-white w-[644px] h-[70px] my-7 font-black font-serif text-2xl">

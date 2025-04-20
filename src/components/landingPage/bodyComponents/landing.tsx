@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Landing() {
   return (
@@ -12,10 +13,12 @@ export default function Landing() {
           Put your knowledge to the test with fun and challenging quizzes across
           a variety of topics.
         </div>
-        <button className="w-80 h-14 border text-purple-700 font-serif border-purple-700">
-          {" "}
-          Take a quick quiz
-        </button>
+        <Link href="/quizButton">
+          <button className="w-80 cursor-pointer h-14 border rounded-2xl hover:bg-purple-400 hover:text-2xl hover:transition-all text-purple-700 font-serif border-purple-700">
+            {" "}
+            Take a quick quiz
+          </button>
+        </Link>
       </div>
       <Image alt="logo" src={"/Heroimage.svg"} width={612} height={132} />
     </div>

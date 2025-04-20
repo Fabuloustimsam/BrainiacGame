@@ -1,15 +1,44 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 
 export default function Page() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email || !username || !password || !confirmPassword) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    // Navigate to verify page with email in URL
+    router.push(`/verifyAcc?email=${encodeURIComponent(email)}`);
+  };
+
   return (
     <div className="flex justify-between">
       {/* Left Panel */}
       <div className="h-[952px] rounded-2xl w-full bg-purple-700">
         <div className="flex items-center gap-5 w-[294px] py-3 px-3">
           <Link href="/">
-            <div className="text-white cursor-pointer">back</div>
+            <div className="text-white cursor-pointer">
+              <ArrowLeft className="w-4 h-4" />
+            </div>
           </Link>
           <Image alt="logo" src="/whitebrainiac.svg" width={230} height={53} />
         </div>
@@ -42,7 +71,10 @@ export default function Page() {
       </div>
 
       {/* Right Panel - Form */}
-      <form className="w-full flex flex-col h-full px-7 gap-3 bg-white justify-center">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full flex flex-col h-full px-7 gap-3 bg-white justify-center"
+      >
         <div className="text-center">
           <div className="font-black pt-2 pb-16 font-serif text-4xl">
             Create your account!
@@ -56,6 +88,8 @@ export default function Page() {
             className="rounded-2xl bg-gray-200 w-[644px] h-[70px] px-4"
             type="text"
             placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
 
@@ -66,6 +100,8 @@ export default function Page() {
             className="rounded-2xl bg-gray-200 w-[644px] h-[70px] px-4"
             type="email"
             placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
@@ -76,6 +112,8 @@ export default function Page() {
             className="rounded-2xl bg-gray-200 w-[644px] h-[70px] px-4"
             type="password"
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
@@ -86,11 +124,16 @@ export default function Page() {
             className="rounded-2xl bg-gray-200 w-[644px] h-[70px] px-4"
             type="password"
             placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
 
         {/* Submit Button */}
-        <button className="bg-purple-700 rounded-2xl text-white w-[644px] h-[70px] my-7 font-black font-serif text-2xl cursor-pointer">
+        <button
+          type="submit"
+          className="bg-purple-700 rounded-2xl text-white w-[644px] h-[70px] my-7 font-black font-serif text-2xl cursor-pointer"
+        >
           Create an Account
         </button>
 
