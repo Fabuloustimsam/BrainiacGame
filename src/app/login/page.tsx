@@ -26,13 +26,11 @@ export default function Page() {
       return;
     }
 
-    // Navigate to verify page with email in URL
     router.push(`/verifyAcc?email=${encodeURIComponent(email)}`);
   };
 
   return (
     <div className="flex justify-between">
-      {/* Left Panel */}
       <div className="h-[952px] rounded-2xl w-full bg-purple-700">
         <div className="flex items-center gap-5 w-[294px] py-3 px-3">
           <Link href="/">
@@ -61,7 +59,7 @@ export default function Page() {
         <footer className="pt-14">
           <div className="items-center font-serif text-2xl flex gap-2.5 justify-center">
             <div className="text-white font-bold">Already have an account?</div>
-            <Link href="/loginButton">
+            <Link href="/login/loginButton">
               <div className="text-yellow-600 font-bold cursor-pointer">
                 Login
               </div>
@@ -70,7 +68,6 @@ export default function Page() {
         </footer>
       </div>
 
-      {/* Right Panel - Form */}
       <form
         onSubmit={handleSubmit}
         className="w-full flex flex-col h-full px-7 gap-3 bg-white justify-center"
@@ -81,7 +78,6 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Username */}
         <div className="flex flex-col gap-2.5">
           <div className="text-2xl font-serif">Username</div>
           <input
@@ -93,7 +89,6 @@ export default function Page() {
           />
         </div>
 
-        {/* Email */}
         <div className="flex flex-col gap-2.5">
           <div className="text-2xl font-serif">Email</div>
           <input
@@ -105,7 +100,6 @@ export default function Page() {
           />
         </div>
 
-        {/* Password */}
         <div className="flex flex-col gap-2.5">
           <div className="text-2xl font-serif">Password</div>
           <input
@@ -117,7 +111,6 @@ export default function Page() {
           />
         </div>
 
-        {/* Confirm Password */}
         <div className="flex flex-col gap-2.5">
           <div className="text-2xl font-serif">Confirm Password</div>
           <input
@@ -129,7 +122,6 @@ export default function Page() {
           />
         </div>
 
-        {/* Submit Button */}
         <button
           type="submit"
           className="bg-purple-700 rounded-2xl text-white w-[644px] h-[70px] my-7 font-black font-serif text-2xl cursor-pointer"
@@ -137,7 +129,6 @@ export default function Page() {
           Create an Account
         </button>
 
-        {/* Divider */}
         <div className="flex items-center justify-center">
           <div className="w-[315px]">
             <hr className="border border-slate-400" />
@@ -148,7 +139,6 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Google Signup */}
         <button className="rounded-2xl flex items-center gap-2 justify-center w-[644px] h-[70px] my-7 font-black font-serif text-lg border border-gray-300 border-b-4 shadow-md bg-white cursor-pointer">
           <Image
             alt="Google Icon"
@@ -159,7 +149,6 @@ export default function Page() {
           Sign up with Google
         </button>
 
-        {/* Footer Text */}
         <footer className="flex items-center justify-center text-center">
           <div className="w-[349px] text-sm">
             By creating an account you accept Brainiac{" "}

@@ -14,7 +14,7 @@ export default function Landing() {
           a variety of topics.
         </div>
         <Link href="/quizButton">
-          <button className="w-80 cursor-pointer h-14 border rounded-2xl hover:bg-purple-400 hover:text-2xl hover:transition-all text-purple-700 font-serif border-purple-700">
+          <button className="w-80 cursor-pointer h-14 border rounded-2xl hover:bg-purple-400  hover:transition-all text-purple-700 font-serif border-purple-700">
             {" "}
             Take a quick quiz
           </button>
