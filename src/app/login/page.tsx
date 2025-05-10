@@ -1,15 +1,42 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { ArrowLeft } from "lucide-react";
 
 export default function Page() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!email || !username || !password || !confirmPassword) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    router.push(`/verifyAcc?email=${encodeURIComponent(email)}`);
+  };
+
   return (
     <div className="flex justify-between">
-      {/* Left Panel */}
       <div className="h-[952px] rounded-2xl w-full bg-purple-700">
         <div className="flex items-center gap-5 w-[294px] py-3 px-3">
           <Link href="/">
-            <div className="text-white cursor-pointer">back</div>
+            <div className="text-white cursor-pointer">
+              <ArrowLeft className="w-4 h-4" />
+            </div>
           </Link>
           <Image alt="logo" src="/whitebrainiac.svg" width={230} height={53} />
         </div>
@@ -32,7 +59,7 @@ export default function Page() {
         <footer className="pt-14">
           <div className="items-center font-serif text-2xl flex gap-2.5 justify-center">
             <div className="text-white font-bold">Already have an account?</div>
-            <Link href="/loginButton">
+            <Link href="/login/loginButton">
               <div className="text-yellow-600 font-bold cursor-pointer">
                 Login
               </div>
@@ -41,60 +68,67 @@ export default function Page() {
         </footer>
       </div>
 
-      {/* Right Panel - Form */}
-      <form className="w-full flex flex-col h-full px-7 gap-3 bg-white justify-center">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full flex flex-col h-full px-7 gap-3 bg-white justify-center"
+      >
         <div className="text-center">
           <div className="font-black pt-2 pb-16 font-serif text-4xl">
             Create your account!
           </div>
         </div>
 
-        {/* Username */}
         <div className="flex flex-col gap-2.5">
           <div className="text-2xl font-serif">Username</div>
           <input
             className="rounded-2xl bg-gray-200 w-[644px] h-[70px] px-4"
             type="text"
             placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </div>
 
-        {/* Email */}
         <div className="flex flex-col gap-2.5">
           <div className="text-2xl font-serif">Email</div>
           <input
             className="rounded-2xl bg-gray-200 w-[644px] h-[70px] px-4"
             type="email"
             placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
-        {/* Password */}
         <div className="flex flex-col gap-2.5">
           <div className="text-2xl font-serif">Password</div>
           <input
             className="rounded-2xl bg-gray-200 w-[644px] h-[70px] px-4"
             type="password"
             placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
 
-        {/* Confirm Password */}
         <div className="flex flex-col gap-2.5">
           <div className="text-2xl font-serif">Confirm Password</div>
           <input
             className="rounded-2xl bg-gray-200 w-[644px] h-[70px] px-4"
             type="password"
             placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </div>
 
-        {/* Submit Button */}
-        <button className="bg-purple-700 rounded-2xl text-white w-[644px] h-[70px] my-7 font-black font-serif text-2xl cursor-pointer">
+        <button
+          type="submit"
+          className="bg-purple-700 rounded-2xl text-white w-[644px] h-[70px] my-7 font-black font-serif text-2xl cursor-pointer"
+        >
           Create an Account
         </button>
 
-        {/* Divider */}
         <div className="flex items-center justify-center">
           <div className="w-[315px]">
             <hr className="border border-slate-400" />
@@ -105,7 +139,6 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Google Signup */}
         <button className="rounded-2xl flex items-center gap-2 justify-center w-[644px] h-[70px] my-7 font-black font-serif text-lg border border-gray-300 border-b-4 shadow-md bg-white cursor-pointer">
           <Image
             alt="Google Icon"
@@ -116,7 +149,6 @@ export default function Page() {
           Sign up with Google
         </button>
 
-        {/* Footer Text */}
         <footer className="flex items-center justify-center text-center">
           <div className="w-[349px] text-sm">
             By creating an account you accept Brainiac{" "}
