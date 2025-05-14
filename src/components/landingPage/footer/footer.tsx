@@ -3,13 +3,14 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <div className="bg-purple-700 w-full text-center justify-items-center content-center h-[243px]">
+    <footer className="bg-purple-700 w-full flex items-center justify-center py-10 px-4">
       <Image
-        alt="logo"
-        src={"/whitebrainiac.svg"}
-        width={468.15}
+        alt="Brainiac logo"
+        src="/whitebrainiac.svg"
+        width={468}
         height={108}
+        className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl h-auto"
       />
-    </div>
+    </footer>
   );
 }

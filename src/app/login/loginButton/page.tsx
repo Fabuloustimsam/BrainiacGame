@@ -2,126 +2,118 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import Link from "next/link";
-import { Eye, EyeOff } from "lucide-react";
-import { ArrowLeft } from "lucide-react";
+import { Eye, EyeOff, ArrowLeft } from "lucide-react";
 
-export default function page() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+export default function Page() {
   const [showPassword, setShowPassword] = useState(false);
-
-  const togglePassword = () => {
-    setShowPassword(!showPassword);
-  };
+  const togglePassword = () => setShowPassword(!showPassword);
 
   return (
-    <>
-      <div className="flex justify-between">
-        <div className="h-[952px] rounded-2xl w-full bg-purple-700">
-          <div className="flex items-center gap-5 w-[294px] py-3 px-3">
-            <Link href={"/"}>
-              <div className="text-white">
-                <ArrowLeft className="w-4 h-4" />
-              </div>
-            </Link>
-            <Image
-              alt="logo"
-              src={"/whitebrainiac.svg"}
-              width={230}
-              height={53}
-            />
-          </div>
-
-          <div className="justify-items-center items-center flex flex-col font-serif text-center">
-            <Image alt="logo" src={"/Heroimage.svg"} width={566} height={566} />
-            <div className="text-4xl text-white font-bold py-2.5">
-              Welcome to Brainiac
-            </div>
-            <div className="text-sm text-white">
-              Sharpen your mind with fun <br /> challenging quizzes
-            </div>
-          </div>
-
-          <footer className="pt-14">
-            <div className="items-center font-serif text-2xl flex gap-2.5 justify-center">
-              <div className="text-white font-bold">
-                Already have an account ?
-              </div>
-              <Link href="/login">
-                <div className="text-yellow-600 font-bold cursor-pointer">
-                  Create an account
-                </div>
-              </Link>
-            </div>
-          </footer>
+    <div className="flex flex-col md:flex-row min-h-screen w-full">
+      {/* Left Section */}
+      <div className="w-full md:w-1/2 bg-purple-700 flex flex-col justify-between rounded-2xl py-6 px-4 md:px-8">
+        {/* Logo + Back Arrow */}
+        <div className="flex items-center gap-4">
+          <Link href="/">
+            <ArrowLeft className="text-white w-5 h-5" />
+          </Link>
+          <Image alt="logo" src="/whitebrainiac.svg" width={180} height={50} />
         </div>
 
-        <form className="w-full flex flex-col h-full px-7 gap-3 bg-white w-full justify-center justify-items-center">
-          <div className="justify-center text-center">
-            <div className="font-black pt-2 pb-16 font-serif text-4xl">
-              Welcome Back!
-            </div>
-          </div>
+        {/* Hero Image & Text */}
+        <div className="flex flex-col items-center text-center mt-10">
+          <Image
+            alt="logo"
+            src="/Heroimage.svg"
+            width={400}
+            height={400}
+            className="w-full max-w-xs sm:max-w-sm md:max-w-md"
+          />
+          <h1 className="text-3xl sm:text-4xl text-white font-bold font-serif py-4">
+            Welcome to Brainiac
+          </h1>
+          <p className="text-sm sm:text-base text-white">
+            Sharpen your mind with fun <br /> challenging quizzes
+          </p>
+        </div>
 
-          <div className="flex flex-col gap-2.5">
-            <div className="text-2xl font-serif">Email</div>
-            <input
-              className="rounded-2xl bg-gray-200 w-[644px] h-[70px] px-4"
-              type="email"
-              placeholder="Email"
-            />
-          </div>
-
-          <div className="flex flex-col gap-2.5">
-            <div className="text-2xl font-serif">Password</div>
-            <div className="flex relative">
-              <input
-                className="rounded-2xl bg-gray-200 w-[644px] h-[70px] px-4"
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-              />
-              <div className="absolute right-8 top-5 cursor-pointer text-gray-500">
-                {showPassword ? (
-                  <Eye size={24} onClick={togglePassword} />
-                ) : (
-                  <EyeOff size={24} onClick={togglePassword} />
-                )}
-              </div>
-            </div>
-            <Link href={"/forgotPassword"}>
-              <div className="text-end px-4 cursor-pointer text-gray-400">
-                Forgot password?
-              </div>
-            </Link>
-          </div>
-
-          <button className="bg-purple-700 cursor-pointer rounded-2xl text-white w-[644px] h-[70px] my-7 font-black font-serif text-2xl">
-            Login
-          </button>
-
-          <div className="flex items-center justify-center">
-            <div className="w-[315px]">
-              <hr className="border border-slate-400" />
-            </div>
-            <h2 className="font-sans px-2">or</h2>
-            <div className="w-[315px]">
-              <hr className="border border-slate-400" />
-            </div>
-          </div>
-
-          <button className="rounded-2xl cursor-pointer flex items-center gap-2 justify-center w-[644px] h-[70px] my-7 font-black font-serif text-lg border border-gray-300 border-b-4 shadow-md bg-white">
-            <Image alt="logo" src={"/googleicon.svg"} width={32} height={32} />
-            Continue with Google
-          </button>
-
-          <footer className="flex items-center pt-48 justify-center text-center">
-            <div className="w-[349px]">
-              By creating an account you accept Brainiac&apos;s{" "}
-              <span className="text-purple-700">Terms of Services</span> and{" "}
-              <span className="text-purple-700">Privacy Policy</span>
-            </div>
-          </footer>
-        </form>
+        {/* Footer CTA */}
+        <div className="text-center mt-10 font-serif text-lg">
+          <p className="text-white font-semibold">Already have an account?</p>
+          <Link href="/login">
+            <span className="text-yellow-500 font-bold cursor-pointer">
+              Create an account
+            </span>
+          </Link>
+        </div>
       </div>
-    </>
+
+      {/* Right Section - Form */}
+      <form className="w-full md:w-1/2 bg-white flex flex-col justify-center gap-6 px-6 sm:px-10 py-10">
+        <h2 className="text-3xl sm:text-4xl font-black font-serif text-center mb-8">
+          Welcome Back!
+        </h2>
+
+        {/* Email */}
+        <div className="flex flex-col gap-2">
+          <label className="text-lg sm:text-2xl font-serif">Email</label>
+          <input
+            className="rounded-2xl bg-gray-200 w-full max-w-[644px] h-[60px] px-4"
+            type="email"
+            placeholder="Email"
+          />
+        </div>
+
+        {/* Password */}
+        <div className="flex flex-col gap-2">
+          <label className="text-lg sm:text-2xl font-serif">Password</label>
+          <div className="relative">
+            <input
+              className="rounded-2xl bg-gray-200 w-full max-w-[644px] h-[60px] px-4"
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+            />
+            <div className="absolute right-4 top-4 cursor-pointer text-gray-500">
+              {showPassword ? (
+                <Eye size={24} onClick={togglePassword} />
+              ) : (
+                <EyeOff size={24} onClick={togglePassword} />
+              )}
+            </div>
+          </div>
+          <Link
+            href="/forgotPassword"
+            className="text-right text-gray-500 text-sm px-1"
+          >
+            Forgot password?
+          </Link>
+        </div>
+
+        {/* Login Button */}
+        <button className="bg-purple-700 text-white font-black text-lg sm:text-2xl rounded-2xl h-[60px] w-full max-w-[644px] mt-4">
+          Login
+        </button>
+
+        {/* Divider */}
+        <div className="flex items-center justify-center gap-2 text-sm">
+          <hr className="flex-grow border border-slate-400" />
+          <span>or</span>
+          <hr className="flex-grow border border-slate-400" />
+        </div>
+
+        {/* Google Button */}
+        <button className="flex items-center justify-center gap-3 border border-gray-300 shadow-md rounded-2xl h-[60px] w-full max-w-[644px]">
+          <Image alt="Google" src="/googleicon.svg" width={24} height={24} />
+          <span className="font-bold text-lg">Continue with Google</span>
+        </button>
+
+        {/* Footer Disclaimer */}
+        <div className="text-xs text-center text-gray-600 mt-6 max-w-md mx-auto">
+          By creating an account, you accept Brainiac&apos;s{" "}
+          <span className="text-purple-700 underline">Terms of Services</span>{" "}
+          and <span className="text-purple-700 underline">Privacy Policy</span>.
+        </div>
+      </form>
+    </div>
   );
 }

@@ -55,18 +55,20 @@ function VerifyAccContent() {
   };
 
   return (
-    <div className="w-full px-10 items-center justify-between text-center content-center flex flex-col">
-      <div className="text-5xl font-serif pt-40">Verify your account</div>
+    <div className="w-full px-4 py-10 flex flex-col items-center text-center">
+      <h1 className="text-3xl sm:text-5xl font-serif pt-10 mb-6">
+        Verify your account
+      </h1>
 
-      <div className="flex flex-col gap-20 font-serif">
-        <div className="text-2xl font-bold">
+      <div className="flex flex-col gap-10 font-serif max-w-xl w-full">
+        <p className="text-lg sm:text-2xl font-bold">
           We sent a 5 digit confirmation code to{" "}
-          <span className="Email text-yellow-700">{email}</span>. Please enter
-          it below to confirm your account.
-        </div>
+          <span className="text-yellow-700">{email}</span>. Please enter it
+          below to confirm your account.
+        </p>
 
         <div
-          className="h-[110px] w-[646px] flex justify-between"
+          className="flex justify-center gap-4 sm:gap-6 flex-wrap"
           onPaste={handlePaste}
         >
           {[...Array(5)].map((_, i) => (
@@ -75,7 +77,7 @@ function VerifyAccContent() {
               type="text"
               inputMode="numeric"
               maxLength={1}
-              className="w-[110px] h-[110px] border border-yellow-600 text-center text-6xl focus:outline-none"
+              className="w-14 h-14 sm:w-20 sm:h-20 text-3xl sm:text-5xl text-center border border-yellow-600 focus:outline-none"
               onChange={(e) => handleChange(e, i)}
               onKeyDown={(e) => handleKeyDown(e, i)}
               ref={(el) => {
@@ -84,18 +86,19 @@ function VerifyAccContent() {
             />
           ))}
         </div>
-        <div className="flex justify-center text-center gap-2.5 self-center">
-          Did not receive a code?{" "}
+
+        <div className="flex justify-center gap-2 text-sm sm:text-base">
+          <span>Didn’t receive a code?</span>
           <span className="font-black underline cursor-pointer">
             Send code again
           </span>
         </div>
       </div>
-      <div className="w-[349px] text-center font-serif">
+
+      <div className="text-sm text-center max-w-xs mt-10 font-serif">
         By creating an account you accept Brainiac&apos;s{" "}
-        <span className="text-purple-700">
-          Terms of Services Privacy Policy
-        </span>
+        <span className="text-purple-700">Terms of Services</span> and{" "}
+        <span className="text-purple-700">Privacy Policy</span>.
       </div>
     </div>
   );
@@ -103,52 +106,46 @@ function VerifyAccContent() {
 
 export default function VerifyAccPage() {
   return (
-    <>
-      <div className="flex justify-between">
-        <div className="h-[952px] rounded-2xl w-full bg-purple-700">
-          <div className="flex items-center gap-5 w-[294px] py-3 px-3">
-            <Link href={"/"}>
-              <div className="text-white">
-                <ArrowLeft className="w-4 h-4" />
-              </div>
-            </Link>
-            <Image
-              alt="logo"
-              src={"/whitebrainiac.svg"}
-              width={230}
-              height={53}
-            />
-          </div>
-
-          <div className="justify-items-center items-center flex flex-col font-serif text-center">
-            <Image alt="logo" src={"/Heroimage.svg"} width={566} height={566} />
-            <div className="text-4xl text-white font-bold py-2.5">
-              Welcome to Brainiac
-            </div>
-            <div className="text-sm text-white">
-              Sharpen your mind with fun <br /> challenging quizzes
-            </div>
-          </div>
-
-          <footer className="pt-14">
-            <div className="items-center font-serif text-2xl flex gap-2.5 justify-center">
-              <div className="text-white font-bold">
-                Already have an account?
-              </div>
-              <Link href="/loginButton">
-                <div className="text-yellow-600 font-bold cursor-pointer">
-                  Login
-                </div>
-              </Link>
-            </div>
-          </footer>
+    <div className="flex flex-col md:flex-row min-h-screen w-full">
+      <div className="w-full md:w-1/2 bg-purple-700 rounded-2xl py-6 px-4 flex flex-col justify-between">
+        <div className="flex items-center gap-4">
+          <Link href="/">
+            <ArrowLeft className="text-white w-5 h-5" />
+          </Link>
+          <Image alt="logo" src="/whitebrainiac.svg" width={180} height={50} />
         </div>
 
-        {/* This part now wrapped in Suspense */}
+        <div className="flex flex-col items-center text-center mt-10">
+          <Image
+            alt="hero"
+            src="/Heroimage.svg"
+            width={400}
+            height={400}
+            className="w-full max-w-xs sm:max-w-sm md:max-w-md"
+          />
+          <h2 className="text-2xl sm:text-4xl text-white font-bold py-4">
+            Welcome to Brainiac
+          </h2>
+          <p className="text-white text-sm">
+            Sharpen your mind with fun <br /> challenging quizzes
+          </p>
+        </div>
+
+        <div className="text-white text-lg font-bold text-center mt-6">
+          Already have an account?{" "}
+          <Link href="/loginButton">
+            <span className="text-yellow-500 underline cursor-pointer">
+              Login
+            </span>
+          </Link>
+        </div>
+      </div>
+
+      <div className="w-full md:w-1/2 flex items-center justify-center">
         <Suspense fallback={<div>Loading...</div>}>
           <VerifyAccContent />
         </Suspense>
       </div>
-    </>
+    </div>
   );
 }

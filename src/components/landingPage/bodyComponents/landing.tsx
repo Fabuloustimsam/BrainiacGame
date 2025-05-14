@@ -4,23 +4,30 @@ import Link from "next/link";
 
 export default function Landing() {
   return (
-    <div className="flex mt-5 justify-between w-full px-10 items-center ">
-      <div className="flex flex-col ">
-        <div className="text-5xl font-serif w-[612px] font-black">
-          The Smartest game on the Internet!
-        </div>
-        <div className="py-7 text-xl w-[612px]">
+    <div className="flex flex-col-reverse lg:flex-row mt-5 px-6 md:px-10 items-center justify-between w-full gap-10">
+      <div className="flex flex-col text-center lg:text-left">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-black max-w-xl">
+          The Smartest Game on the Internet!
+        </h1>
+        <p className="py-5 text-base sm:text-lg lg:text-xl max-w-xl">
           Put your knowledge to the test with fun and challenging quizzes across
           a variety of topics.
-        </div>
+        </p>
         <Link href="/quizButton">
-          <button className="w-80 cursor-pointer h-14 border rounded-2xl hover:bg-purple-400  hover:transition-all text-purple-700 font-serif border-purple-700">
-            {" "}
-            Take a quick quiz
+          <button className="w-full sm:w-72 h-14 border rounded-2xl hover:bg-purple-400 hover:transition-all text-purple-700 font-serif border-purple-700">
+            Take a Quick Quiz
           </button>
         </Link>
       </div>
-      <Image alt="logo" src={"/Heroimage.svg"} width={612} height={132} />
+      <div className="flex justify-center">
+        <Image
+          alt="Hero image"
+          src="/Heroimage.svg"
+          width={612}
+          height={132}
+          className="w-full max-w-md md:max-w-lg lg:max-w-xl h-auto"
+        />
+      </div>
     </div>
   );
 }
